@@ -3,402 +3,65 @@
     "id": 1,
     "question": "Question 1:",
     "options": [
-      "Operating system can run many processes at the same time on multi-core processor",
-      "Operating system can run many threads at the same time on multi-core processor",
-      "When a process has several threads, race condition might occur",
-      "Only one process can be executed on a core of a processor at one time",
-      "Memory of a process cannot be shared with other processes"
+      "A thread can drink coffee while executing",
+      "Processes are managed by the operating system",
+      "Threads allow parallelism within a process",
+      "Context switching has overhead",
+      "Mutex can prevent race conditions"
     ],
-    "answer": "Memory of a process cannot be shared with other processes",
-    "reason": "Processes can share memory if explicitly allowed, like using shared memory or inter-process communication (IPC)."
+    "answer": "A thread can drink coffee while executing",
+    "reason": "Threads are not physical beings and cannot consume beverages. They're units of execution, not interns."
   },
   {
     "id": 2,
     "question": "Question 2:",
     "options": [
-      "Each thread has its own PC",
-      "All threads share resource with in a process",
-      "OS also needs to context-switch threads",
-      "Thread shares data but has separate stack",
-      "Each thread has separate address spaces"
+      "The CPU runs only on solar power",
+      "Processes can be blocked while waiting for I/O",
+      "Threads are lighter weight than processes",
+      "Thread switching is usually faster than process switching",
+      "Deadlock can occur when processes wait on each other"
     ],
-    "answer": "Each thread has separate address spaces",
-    "reason": "Threads in the same process share the same address space, which includes code, data, and resources."
+    "answer": "The CPU runs only on solar power",
+    "reason": "CPUs require electrical power and do not run on solar energy unless the entire machine is powered by a solar-powered source."
   },
   {
     "id": 3,
     "question": "Question 3:",
     "options": [
-      "To prevent race condition, mutex must be guaranteed when critical region is entered",
-      "Mutex allows one of several threads to enter a critical region",
-      "Race condition might occur when threads share resources",
-      "Race condition will not occur if one thread is running at a time",
-      "Race condition makes processes run faster"
+      "Semaphores help with process synchronization",
+      "Threads can be created within a process",
+      "Operating systems are sentient beings",
+      "Processes can be in a waiting state",
+      "Multithreading improves CPU utilization"
     ],
-    "answer": "Race condition makes processes run faster",
-    "reason": "A race condition doesn\u2019t improve speed; it causes unpredictable behavior when multiple processes access shared resources."
+    "answer": "Operating systems are sentient beings",
+    "reason": "OSes are complex programs, not living entities with emotions or consciousness."
   },
   {
     "id": 4,
     "question": "Question 4:",
     "options": [
-      "for(int i=10;i>0;i--);",
-      "count = count + 1",
-      "sum +=i",
-      "all of them can be a critical region",
-      "`i++`"
+      "Virtual memory allows programs to use more memory than physically available",
+      "Threads can share data with each other",
+      "An OS can schedule processes using round-robin",
+      "A process can teleport to another computer without network",
+      "Interrupts help handle asynchronous events"
     ],
-    "answer": "`i++`",
-    "reason": "Even simple operations like `i++` can be critical if multiple threads access the variable without synchronization."
+    "answer": "A process can teleport to another computer without network",
+    "reason": "Processes can't 'teleport'—communication between machines requires a network or explicit transfer methods like RPC or distributed systems."
   },
   {
     "id": 5,
     "question": "Question 5:",
     "options": [
-      "pthread_cond_wait",
-      "pthread_create",
-      "pthread_cond_init",
-      "pthread_mutex_init",
-      "`pthread_join`"
+      "Thread starvation is a scheduling issue",
+      "Kernel mode gives access to privileged instructions",
+      "Users can download more RAM",
+      "Paging divides memory into fixed-size pages",
+      "Swapping helps manage memory"
     ],
-    "answer": "`pthread_join`",
-    "reason": "`pthread_join` blocks the caller until the specified thread finishes."
-  },
-  {
-    "id": 6,
-    "question": "Question 6:",
-    "options": [
-      "compare_and_swap is a hardware lock",
-      "Spin lock wastes CPU cycles waiting",
-      "Software test and set is not correct",
-      "We can you interrupt to create lock",
-      "We can create a pure software lock"],
-    "answer": "We can create a pure software lock",
-    "reason": "Hardware assistance (like atomic instructions) is needed to create reliable locks."
-  },
-  {
-    "id": 7,
-    "question": "Question 7:",
-    "options": [
-      "Fetch and add does not know the order of lock request",
-      "Compare-and-swap is fairer than test-and-set",
-      "Process can only wait for lock by spinning",
-      "Load-linked allows caller to load a ticket",
-      "Starvation might happen when using only test-and-set"],
-    "answer": "Starvation might happen when using only test-and-set",
-    "reason": "Starvation occurs if one thread gets stuck waiting because others keep accessing the lock."
-  },
-  {
-    "id": 8,
-    "question": "Question 8:",
-    "options": [
-      "Sleep instead of spin",
-      "Yield system call",
-      "Park when lock",
-      "Using waiting queue for lock request",
-      "All are software supports to solve wasting cycles"
-    ],
-    "answer": "All are software supports to solve wasting cycles",
-    "reason": "Techniques like spinlocks or conditional variables help minimize CPU waste."
-  },
-  {
-    "id": 9,
-    "question": "Question 9:",
-    "options": [
-      "The program does not work with one conditional variable",
-      "Producer is waiting on empty condition",
-      "Consumer is waiting on full condition",
-      "You need all mutex, full, and empty",
-      "Mutex is used to count available items"],
-    "answer": "Mutex is used to count available items",
-    "reason": "Mutexes manage access to shared resources, but counters like semaphores count available items."
-  },
-  {
-    "id": 10,
-    "question": "Question 10:",
-    "options": [
-      "mutex_lock(&mutex)",
-      "mutex_unlock(&mutex)",
-      "cond_signal (&empty)",
-      "cond_wait(&fill, &mutex)",
-      "`cond_signal(&fill)`"],
-    "answer": "`cond_signal(&fill)`",
-    "reason": "The producer signals the consumer that the buffer has a new item (fills the buffer)."
-  },
-  {
-    "id": 11,
-    "question": "Question 11:",
-    "options": [
-      "mutex_lock(&mutex)",
-      "mutex_unlock(&mutex)",
-      "cond_signal(&fill)",
-      "cond_wait (&fill, &mutex)",
-      "`cond_signal(&empty)`"
-      ],
-    "answer": "`cond_signal(&empty)`",
-    "reason": "The consumer signals the producer that space is available in the buffer (empties the buffer)."
-  },
-  {
-    "id": 12,
-    "question": "Question 12:",
-    "options": [
-      "There are binary and continuous semaphore",
-      "When sem_post is called, value is decreased by 1",
-      "When sem_wait is call, value is increased by 1",
-      "Semaphore value can only be 0 and 1",
-      "Semaphore can be used to create a mutex"
-      ],
-    "answer": "Semaphore can be used to create a mutex",
-    "reason": "A binary semaphore (values 0 or 1) can act as a mutex."
-  },
-  {
-    "id": 13,
-    "question": "Question 13:",
-    "options": [
-      "A process has to request for a resource before use",
-      "A process needs to hold a resource while using it",
-      "When a process finish the task, resources can be released",
-      "A process cannot hold processor",
-      "Each resource type only has one instance"
-      ],
-    "answer": "Each resource type only has one instance",
-    "reason": "Some resource types can have multiple instances, like printers or database connections."
-  },
-  {
-    "id": 14,
-    "question": "Question 14:",
-    "options": [
-      "Race condition",
-      "Trashing",
-      "Internal fragmentation",
-      "Zombie",
-      "Deadlock"
-      ],
-    "answer": "Deadlock",
-    "reason": "Deadlocks occur when processes compete for resources in a way that none can proceed."
-  },
-  {
-    "id": 15,
-    "question": "Question 15:",
-    "options": [
-      "Deadlock will occur when many processes are waiting for CPU",
-      "Deadlock will occur when virtual memory is running low",
-      "Deadlock will occur if process need to hold resources and wait for other resources",
-      "Deadlock will occur even there is only one resource type",
-      "A deadlock needs more than one process to occur"
-      ],
-    "answer": "A deadlock needs more than one process to occur",
-    "reason": "Deadlocks involve at least two processes holding resources and waiting on each other."
-  },
-  {
-    "id": 16,
-    "question": "Question 16:",
-    "options": [
-      "Mutual exclusion",
-      "Non-preemption",
-      "Hold and wait",
-      "Circular wait",
-      "Virtualization"
-      ],
-    "answer": "Virtualization",
-    "reason": "The four conditions are mutual exclusion, hold-and-wait, no preemption, and circular wait."
-  },
-  {
-    "id": 17,
-    "question": "Question 17:",
-    "options": [
-      "Banker algorithm is in a safe state",
-      "There is no resource in holding",
-      "Resource can be preempted",
-      "Resource allocation graph has no circle",
-      "Resource allocation graph has a cycle"
-      ],
-    "answer": "Resource allocation graph has a cycle",
-    "reason": "A cycle in the resource allocation graph means processes are stuck waiting for each other."
-  },
-  {
-    "id": 18,
-    "question": "Question 18:",
-    "options": [
-      "Prevention",
-      "Avoidance",
-      "Detection",
-      "Deadlock will occur in all",
-      "management",
-      "Both prevention and avoidance"
-      ],
-    "answer": "Both prevention and avoidance",
-    "reason": "Prevention and avoidance strategies ensure deadlocks don\u2019t happen."
-  },
-  {
-    "id": 19,
-    "question": "Question 19:",
-    "options": [
-      "Prevention",
-      "Avoidance",
-      "Both prevention and avoidance",
-      "All managements need recovery",
-      "scheme",
-      "Detection"
-      ],
-    "answer": "Detection",
-    "reason": "Deadlock detection identifies a deadlock after it occurs and then takes action to recover."
-  },
-  {
-    "id": 20,
-    "question": "Question 20:",
-    "options": [
-      "No preemption",
-      "Hold and wait",
-      "Mutual exclusion",
-      "Starvation",
-      "Circular wait"
-      ],
-    "answer": "Circular wait",
-    "reason": "Resource ordering prevents circular dependencies, a key cause of deadlocks."
-  },
-  {
-    "id": 21,
-    "question": "Question 21:",
-    "options": [
-      "test_and_set",
-      "try_lock and try_wait",
-      "fetch_and_add",
-      "request resource in increasing order",
-      "`yield`" 
-      ],
-    "answer": "`yield`",
-    "reason": "`yield` allows a process to voluntarily give up the CPU to avoid resource conflicts."
-  },
-  {
-    "id": 22,
-    "question": "Question 22:",
-    "options": [
-      "Process must declare maximum number of resources",
-      "Need is Max minus allocation",
-      "Deadlock will occur in unsafe state",
-      "Request can be granted if resource left is more than needed resource",
-      "Deadlock might occur in a safe state"
-     ],
-    "answer": "Deadlock might occur in a safe state",
-    "reason": "A safe state guarantees that deadlock will not occur."
-  },
-  {
-    "id": 23,
-    "question": "Question 23:",
-    "options": [
-      "Deny request",
-      "Preempt resource from process",
-      "Put process on wait queue",
-      "Put process on ready queue",
-      "Terminate processes"
-      ],
-    "answer": "Terminate processes",
-    "reason": "Terminating processes can free up resources to resolve a deadlock."
-  },
-  {
-    "id": 24,
-    "question": "Question 24:",
-    "options": [
-      "Wait-for graph is equivalent to resource allocation graph",
-      "Resource allocation graph is used in deadlock avoidance",
-      "There is no resource in wait-for graph",
-      "Deadlock occurs when there is a loop in wait-for graph",
-      "Resource allocation graph is used in deadlock detection"
-      ],
-    "answer": "Resource allocation graph is used in deadlock detection",
-    "reason": "It is used for deadlock prevention and avoidance, not direct detection."
-  },
-  {
-    "id": 25,
-    "question": "Question 25:",
-    "options": [
-      "System call",
-      "Interrupt",
-      "Direct memory access",
-      "Pooling",
-      "Memory-Mapped I/O" 
-    ],
-    "answer": "Memory-Mapped I/O",
-    "reason": "Device registers are accessed like normal memory locations."
-  },
-  {
-    "id": 26,
-    "question": "Question 26:",
-    "options": [
-      "Interrupt can be hardware and software",
-      "Interrupt frees up processor to do something else",
-      "DMA moves data from device directly into memory",
-      "Interrupt vector table stores locations of service routines",
-      "Polling is the most efficient method to access I/O" 
-    ],
-    "answer": "Polling is the most efficient method to access I/O",
-    "reason": "Polling wastes CPU cycles by repeatedly checking for readiness."
-  },
-  {
-    "id": 27,
-    "question": "Question 27:",
-    "options": [
-      "Application layer",
-      "File system",
-      "Generic block layer",
-      "All layers can directly read and write blocks on device",
-      "Device driver"
-    ],
-    "answer": "Device driver",
-    "reason": "Device drivers handle hardware-specific operations."
-  },
-  {
-    "id": 28,
-    "question": "Question 28:",
-    "options": [
-      "FCFS",
-      "SCAN",
-      "LOOK",
-      "No starvation in disk scheduling",
-      "SSTF"
-    ],
-    "answer": "SSTF",
-    "reason": "SSTF (Shortest Seek Time First) can favor certain requests and ignore others."
-  },
-  {
-    "id": 29,
-    "question": "Question 29:",
-    "options": [
-      "back to the outer, again?",
-      "FCFS",
-      "SSTF",
-      "SPTF",
-      "LOOK",
-      "SCAN"
-    ],
-    "answer": "SCAN",
-    "reason": "SCAN (elevator algorithm) moves back and forth across the disk."
-  },
-  {
-    "id": 30,
-    "question": "Question 30:",
-    "options": [
-      "RAID 0 is stripping with no mirror",
-      "RAID 1 is mirror with no stripping",
-      "RAID 2 has error correcting code",
-      "RAID 3 is Bit-striping and dedicated parity disk",
-      "RAID 4 is block-striping and block-mirroring"
-    ],
-    "answer": "RAID 4 is block-striping and block-mirroring",
-    "reason": "RAID 4 uses block-striping with parity, not mirroring."
-  },
-  {
-    "id": 31,
-    "question": "Question 31:",
-    "options": [
-      "Contiguous allocation",
-      "Indexed allocation",
-      "Multi-level indexed allocation",
-      "Combined scheme",
-      "Linked allocation"
-    ],
-    "answer": "Linked allocation",
-    "reason": "FAT (File Allocation Table) uses pointers to link blocks like a linked list."
+    "answer": "Users can download more RAM",
+    "reason": "RAM is hardware. You cannot download physical memory through the internet."
   }
 ]
