@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import quizData from './quiz.json';
+import quizData from './quizData.json';
 
 type Question = {
   id: number;
@@ -34,6 +34,7 @@ const App: React.FC = () => {
         setCurrentQuestion((prev) => (prev + 1) % quizData.length);
       }, 100); // Delay before moving to next question
     }
+    
   };
 
   const nextQuestion = () => {
