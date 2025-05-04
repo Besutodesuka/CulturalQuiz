@@ -11,23 +11,26 @@ interface Choice {
 export function calculateScore(choices: Choice[]): Record<string, number> {
     // init score dict at all type: 0
     const scoreDict: Record<string, number> = {
-        "power": 0,
-        "uncertainty": 0,
-        "freedom": 0,
+        "P": 0, // High-low Power distance
+        "IC": 0, // Individualism - Collectivism
+        "MF": 0, // Motivation towards achievement and success (Masculine - Feminine)
+        "UA": 0, // Uncertainty avoidance
+        "SL": 0, // Short-term - Long-term orientation
+        "IR": 0, // Indulgence - Restraint
     };
   
     // for loop on choices
     for (const choice of choices) {
       const type = choice.type; // get type
       const score = choice.score; // get score
-  
+
       // add score to selected type
       if (!scoreDict[type]) {
         scoreDict[type] = 0;
       }
       scoreDict[type] += score;
     }
-  
+    
     // return the dict
     return scoreDict;
   }

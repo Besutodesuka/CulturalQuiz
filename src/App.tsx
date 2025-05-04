@@ -18,7 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/quiz" element={<Quiz />} />
-        <Route path="/quiz-results" element={<Summary />} />
+        <Route path="/summary" element={<Summary />} />
         {/* Add other routes as needed */}
         <Route path="*" element={<div>404 - Page Not Found</div>} /> {/* Catch-all route */}
       </Routes>
