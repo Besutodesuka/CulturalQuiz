@@ -64,10 +64,15 @@ export default function Summary() {
     const [error, setError] = useState<string | null>(null);
     const [guessSubmitted, setGuessSubmitted] = useState(false);
     // Safely access answer logs from location state
-    // const answerLogs: Choice[] | undefined = location.state?.answerLogs; //set undefined on dev
+    const answerLogs: Choice[] | undefined = location.state?.answerLogs;
 
+    if (!answerLogs || answerLogs.length === 0) {
+        setError("No answer logs found. Please complete the quiz first.");
+        setIsLoading(false);
+        return;
+    }
     // this is just for demo
-    const answerLogs = [];
+    // const answerLogs = [];
 
     useEffect(() => {
         if ((answerLogs && answerLogs.length > 0) || true) { // remove if the choice schema is availiable

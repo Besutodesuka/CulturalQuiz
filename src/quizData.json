@@ -1,67 +1,66 @@
 [
   {
     "id": 1,
-    "question": "Question 1:",
+    "question": "First Question",
     "options": [
-      "A thread can drink coffee while executing",
-      "Processes are managed by the operating system",
-      "Threads allow parallelism within a process",
-      "Context switching has overhead",
-      "Mutex can prevent race conditions"
+      {
+        "value": "A thread can drink coffee while executing",
+        "type": "P",
+        "score": 1
+      },
+      {
+        "value": "Processes are managed by the operating system",
+        "type": "IC",
+        "score": 1
+      },
+      {
+        "value": "Threads allow parallelism within a process",
+        "type": "MF",
+        "score": 1
+      },
+      {
+        "value": "Context switching has overhead",
+        "type": "UA",
+        "score": 1
+      },
+      {
+        "value": "Mutex can prevent race conditions",
+        "type": "SL",
+        "score": 1
+      }
     ],
-    "answer": "A thread can drink coffee while executing",
     "reason": "Threads are not physical beings and cannot consume beverages. They're units of execution, not interns."
   },
   {
     "id": 2,
-    "question": "Question 2:",
+    "question": "Second Question",
     "options": [
-      "The CPU runs only on solar power",
-      "Processes can be blocked while waiting for I/O",
-      "Threads are lighter weight than processes",
-      "Thread switching is usually faster than process switching",
-      "Deadlock can occur when processes wait on each other"
+      {
+        "value": "A thread can drink coffee while executing",
+        "type": "IR",
+        "score": 1
+      },
+      {
+        "value": "Processes are managed by the operating system",
+        "type": "P",
+        "score": 1
+      },
+      {
+        "value": "Threads allow parallelism within a process",
+        "type": "IC",
+        "score": 1
+      },
+      {
+        "value": "Context switching has overhead",
+        "type": "MF",
+        "score": 1
+      },
+      {
+        "value": "Mutex can prevent race conditions",
+        "type": "UA",
+        "score": 1
+      }
     ],
-    "answer": "The CPU runs only on solar power",
-    "reason": "CPUs require electrical power and do not run on solar energy unless the entire machine is powered by a solar-powered source."
-  },
-  {
-    "id": 3,
-    "question": "Question 3:",
-    "options": [
-      "Semaphores help with process synchronization",
-      "Threads can be created within a process",
-      "Operating systems are sentient beings",
-      "Processes can be in a waiting state",
-      "Multithreading improves CPU utilization"
-    ],
-    "answer": "Operating systems are sentient beings",
-    "reason": "OSes are complex programs, not living entities with emotions or consciousness."
-  },
-  {
-    "id": 4,
-    "question": "Question 4:",
-    "options": [
-      "Virtual memory allows programs to use more memory than physically available",
-      "Threads can share data with each other",
-      "An OS can schedule processes using round-robin",
-      "A process can teleport to another computer without network",
-      "Interrupts help handle asynchronous events"
-    ],
-    "answer": "A process can teleport to another computer without network",
-    "reason": "Processes can't 'teleport'—communication between machines requires a network or explicit transfer methods like RPC or distributed systems."
-  },
-  {
-    "id": 5,
-    "question": "Question 5:",
-    "options": [
-      "Thread starvation is a scheduling issue",
-      "Kernel mode gives access to privileged instructions",
-      "Users can download more RAM",
-      "Paging divides memory into fixed-size pages",
-      "Swapping helps manage memory"
-    ],
-    "answer": "Users can download more RAM",
-    "reason": "RAM is hardware. You cannot download physical memory through the internet."
+    "reason": "Threads are not physical beings and cannot consume beverages. They're units of execution, not interns."
   }
 ]
