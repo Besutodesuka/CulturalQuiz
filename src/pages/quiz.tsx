@@ -17,10 +17,28 @@ type Question = {
 };
 
 const Quiz: React.FC = () => {
-
   const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [NextQuestionBuffer, setNextQuestion] = useState(0);
   const [answers, setAnswers] = useState<{ [key: number]: Choice }>({});
   const [shuffledOptions, setShuffledOptions] = useState<Choice[]>([]);
+
+  const [stack, setStack] = useState<number[]>([]);
+
+  const push = () => {
+    if (currentQuestion) {
+      setStack([...stack, currentQuestion]);
+    }
+  };
+
+  const pop = () => {
+    if (stack.length > 0) {
+      const newStack = [...stack];
+      const poppedItem = newStack.pop();
+      setStack(newStack);
+      return poppedItem
+    }
+    return 0
+  };
 
   const question: Question = quizData[currentQuestion];
   const navigate = useNavigate();
@@ -38,40 +56,32 @@ const Quiz: React.FC = () => {
 
   // answer handler
   const handleAnswer = (selectedOption: Choice) => {
+    const nextId = selectedOption.nextQuestionId;
+    const nextIndex = quizData.findIndex((q) => q.id === nextId);
+    setNextQuestion(nextIndex);
     setAnswers((prev) => ({
       ...prev,
       [currentQuestion]: selectedOption,
     }));
-  
+  };
+
+  const nextQuestion = () => {
     // Navigate to the next question after a small delay
     setTimeout(() => {
-      const nextId = selectedOption.nextQuestionId;
-      const nextIndex = quizData.findIndex((q) => q.id === nextId);
-  
-      if (nextIndex !== -1) {
-        setCurrentQuestion(nextIndex);
+      if (NextQuestionBuffer !== -1) {
+        push();
+        setCurrentQuestion(NextQuestionBuffer);
       } else {
         // End of quiz or invalid nextQuestionId
-        navigate('/summary', { state: { answerLogs: Object.values({ ...answers, [currentQuestion]: selectedOption }) } });
+        navigate('/summary', { state: { answerLogs: Object.values({ ...answers}) } });
       }
     }, 300); // Optional delay for UX
   };
 
-  // what is this?
-  const nextQuestion = () => {
-    const is_ended = currentQuestion + 1 === quizData.length;
-
-    if (is_ended) {
-      navigate('/summary', { state: { answerLogs: Object.values(answers) } });
-
-    } else {
-      setCurrentQuestion((prev) => (prev + 1) % quizData.length);
-    }
-  };
-
-
   const prevQuestion = () => {
-    setCurrentQuestion((prev) => (prev - 1 + quizData.length) % quizData.length);
+    const prevId = pop();
+    setNextQuestion(currentQuestion);
+    setCurrentQuestion(prevId);
   };
 
   // Calculate score in real-time
@@ -117,8 +127,6 @@ const Quiz: React.FC = () => {
             >
               {option.value}
             </button>
-
-
           ))}
 
         </div>
