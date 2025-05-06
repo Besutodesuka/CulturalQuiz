@@ -4,15 +4,15 @@ import { useNavigate } from 'react-router-dom';
 
 type Choice = {
   value: string;
-  type: string; // e.g., "MCQ"
+  type: string;
   score: number;
+  nextQuestionId: number;
 };
 
 type Question = {
   id: number;
   question: string;
   options: Choice[]; // use the Choice type here
-  reason: string;
   name?: string; // you can set this manually or derive it elsewhere
 };
 
@@ -40,8 +40,21 @@ const Quiz: React.FC = () => {
   const handleAnswer = (selectedOption: Choice) => {
     setAnswers((prev) => ({
       ...prev,
-      [currentQuestion]: selectedOption, // Store the full choice object
+      [currentQuestion]: selectedOption,
     }));
+  
+    // Navigate to the next question after a small delay
+    setTimeout(() => {
+      const nextId = selectedOption.nextQuestionId;
+      const nextIndex = quizData.findIndex((q) => q.id === nextId);
+  
+      if (nextIndex !== -1) {
+        setCurrentQuestion(nextIndex);
+      } else {
+        // End of quiz or invalid nextQuestionId
+        navigate('/summary', { state: { answerLogs: Object.values({ ...answers, [currentQuestion]: selectedOption }) } });
+      }
+    }, 300); // Optional delay for UX
   };
 
   // what is this?
@@ -49,12 +62,6 @@ const Quiz: React.FC = () => {
     const is_ended = currentQuestion + 1 === quizData.length;
 
     if (is_ended) {
-      // Convert answers object to an array if needed
-      const userAnswers = Object.entries(answers).map(([questionIndex, choice]) => ({
-        questionIndex: parseInt(questionIndex),
-        choice
-      }));
-
       navigate('/summary', { state: { answerLogs: Object.values(answers) } });
 
     } else {
