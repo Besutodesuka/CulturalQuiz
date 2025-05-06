@@ -2,113 +2,79 @@ import React, { useState, useEffect } from 'react';
 import quizData from '../quizData.json';
 import { useNavigate } from 'react-router-dom';
 
-type Choice = {
-  value: string;
-  type: string;
-  score: number;
-  nextQuestionId: number;
-};
-
 type Question = {
   id: number;
   question: string;
-  options: Choice[]; // use the Choice type here
-  name?: string; // you can set this manually or derive it elsewhere
+  options: string[];
+  answer: string;
+  reason: string;
+  name: string; // this is not included in the json file
 };
 
 const Quiz: React.FC = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [NextQuestionBuffer, setNextQuestion] = useState(0);
-  const [answers, setAnswers] = useState<{ [key: number]: Choice }>({});
-  const [shuffledOptions, setShuffledOptions] = useState<Choice[]>([]);
-
-  const [stack, setStack] = useState<number[]>([]);
-
-  const push = () => {
-    if (currentQuestion) {
-      setStack([...stack, currentQuestion]);
-    }
-  };
-
-  const pop = () => {
-    if (stack.length > 0) {
-      const newStack = [...stack];
-      const poppedItem = newStack.pop();
-      setStack(newStack);
-      return poppedItem
-    }
-    return 0
-  };
+  const [answers, setAnswers] = useState<{ [key: number]: string }>({});
+  const [shuffledOptions, setShuffledOptions] = useState<string[]>([]);
 
   const question: Question = quizData[currentQuestion];
   const navigate = useNavigate();
 
-  // shuffed question
   useEffect(() => {
     // Shuffle choices only when the question changes
     setShuffledOptions([...question.options].sort(() => Math.random() - 0.5));
   }, [currentQuestion]);
 
-  useEffect(() => {
-    console.log("Answers state updated:", answers);
-  }, [answers]);
-
-
-  // answer handler
-  const handleAnswer = (selectedOption: Choice) => {
-    const nextId = selectedOption.nextQuestionId;
-    const nextIndex = quizData.findIndex((q) => q.id === nextId);
-    setNextQuestion(nextIndex);
+  const handleAnswer = (answer: string) => {
     setAnswers((prev) => ({
       ...prev,
-      [currentQuestion]: selectedOption,
+      [currentQuestion]: answer, // Store answer for the current question
     }));
+
+    // If the answer is correct, automatically go to the next question
+    if (answer === question.answer) {
+      setTimeout(() => {
+        setCurrentQuestion((prev) => (prev + 1) % quizData.length);
+      }, 100); // Delay before moving to next question
+    }
+    
   };
 
   const nextQuestion = () => {
-    // Navigate to the next question after a small delay
-    setTimeout(() => {
-      if (NextQuestionBuffer !== -1) {
-        push();
-        setCurrentQuestion(NextQuestionBuffer);
-      } else {
-        // End of quiz or invalid nextQuestionId
-        navigate('/summary', { state: { answerLogs: Object.values({ ...answers}) } });
-      }
-    }, 300); // Optional delay for UX
+    const is_ended = currentQuestion+1 == quizData.length
+    // console.log(currentQuestion)
+    if(is_ended){
+      navigate('/summary');
+    } else
+    {
+      setCurrentQuestion((prev) => (prev + 1) % quizData.length);
+    }
   };
 
   const prevQuestion = () => {
-    const prevId = pop();
-    setNextQuestion(currentQuestion);
-    setCurrentQuestion(prevId);
+    setCurrentQuestion((prev) => (prev - 1 + quizData.length) % quizData.length);
   };
 
   // Calculate score in real-time
-  // const correctAnswers = Object.keys(answers).reduce(
-  //   (total, key) =>
-  //     answers[parseInt(key)]?.value === quizData[parseInt(key)].answer
-  //       ? total + 1
-  //       : total,
-  //   0
-  // );
-
+  const correctAnswers = Object.keys(answers).reduce(
+    (total, key) => (answers[parseInt(key)] === quizData[parseInt(key)].answer ? total + 1 : total),
+    0
+  );
 
   // Calculate progress
-  // const progress = ((correctAnswers / quizData.length) * 100).toFixed(1);
+  const progress = ((correctAnswers / quizData.length) * 100).toFixed(1);
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-6 relative">
       {/* Progress Bar on Top Right */}
-      {/* <div className="absolute top-4 right-4 bg-white shadow-md p-2 rounded-lg"> */}
-        {/* <p className="text-sm font-semibold">Correct: {correctAnswers} / {quizData.length}</p>
+      <div className="absolute top-4 right-4 bg-white shadow-md p-2 rounded-lg">
+        <p className="text-sm font-semibold">Correct: {correctAnswers} / {quizData.length}</p>
         <div className="w-32 bg-gray-200 h-3 rounded-lg mt-1">
           <div
             className="bg-green-500 h-3 rounded-lg transition-all"
             style={{ width: `${progress}%` }}
           ></div>
-        </div> */}
-      {/* </div> */}
+        </div>
+      </div>
 
       <div className="bg-white shadow-lg rounded-2xl p-6 max-w-lg w-full">
         <h1 className="text-2xl font-bold text-gray-800 mb-6 text-center">
@@ -117,30 +83,29 @@ const Quiz: React.FC = () => {
         <div className="space-y-4">
           {shuffledOptions.map((option) => (
             <button
-              key={option.value}
+              key={option}
               onClick={() => handleAnswer(option)}
-              className={`p-4 w-full text-left border rounded-lg transition-all duration-300 
-             ${answers[currentQuestion]?.value === option.value
-                  ? 'bg-blue-200 border-blue-500' // Selected = blue
-                  : 'bg-gray-50 hover:bg-gray-200 border-gray-300' // Unselected = gray + hover
+              className={`p-4 w-full text-left border rounded-lg transition-all duration-300 ${answers[currentQuestion] === option
+                  ? option === question.answer
+                    ? 'bg-green-200 border-green-400'
+                    : 'bg-red-200 border-red-400'
+                  : 'bg-gray-50 hover:bg-gray-200'
                 }`}
             >
-              {option.value}
+              {option}
             </button>
           ))}
-
         </div>
 
         {answers[currentQuestion] && (
           <div className="mt-6 p-4 border-t bg-gray-50 rounded-lg">
-            {/* {answers[currentQuestion]?.value === question.answer ? (
+            {answers[currentQuestion] === question.answer ? (
               <p className="text-green-600 font-medium">✅ Correct! {question.reason}</p>
             ) : (
               <p className="text-red-600 font-medium">
                 ❌ Incorrect. The correct answer is: <strong>{question.answer}</strong>. {question.reason}
               </p>
-            )} */}
-
+            )}
 
             <div className="mt-4 flex justify-between">
               <button
