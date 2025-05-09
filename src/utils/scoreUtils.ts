@@ -1,11 +1,13 @@
-interface Choice {
-    questionId: string;
-    selectedOption: string;
-    correctOption: string;
-    type: string; // assumed field
-    score: number; // assumed score for that question/answer
-  }
+type Score = {
+  type: string;
+  score: number;
+}
 
+export type Choice = {
+  value: string;
+  score: Score[];
+  nextQuestionId: number;
+};
 
 // scoring culture
 export function calculateScore(choices: Choice[]): Record<string, number> {
@@ -21,14 +23,15 @@ export function calculateScore(choices: Choice[]): Record<string, number> {
   
     // for loop on choices
     for (const choice of choices) {
-      const type = choice.type; // get type
-      const score = choice.score; // get score
-
-      // add score to selected type
-      if (!scoreDict[type]) {
-        scoreDict[type] = 0;
+      for (const score of choice.score){
+        const type = score.type; // get type
+        const s = score.score; // get score
+        // add score to selected type
+        if (!scoreDict[type]) {
+          scoreDict[type] = 0;
+        }
+        scoreDict[type] += s;
       }
-      scoreDict[type] += score;
     }
     
     // return the dict
@@ -46,3 +49,4 @@ a.href = URL.createObjectURL(blob);
 a.download = 'results.csv';
 a.click();
 }
+

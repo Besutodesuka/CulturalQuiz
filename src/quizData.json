@@ -5,32 +5,30 @@
     "options": [
       {
         "value": "A thread can drink coffee while executing",
-        "type": "P",
-        "score": 1,
-        "nextQuestionId": 3
+        "score":[
+          {
+            "type": "P",
+            "score": 1
+          },
+          {
+            "type": "IC",
+            "score": 1
+          }
+        ],
+        "nextQuestionId": 2
       },
       {
-        "value": "Processes are managed by the operating system",
-        "type": "IC",
-        "score": 1,
-        "nextQuestionId": 2 
-      },
-      {
-        "value": "Threads allow parallelism within a process",
-        "type": "MF",
-        "score": 1,
-        "nextQuestionId": 2 
-      },
-      {
-        "value": "Context switching has overhead",
-        "type": "UA",
-        "score": 1,
-        "nextQuestionId": 2 
-      },
-      {
-        "value": "Mutex can prevent race conditions",
-        "type": "SL",
-        "score": 1,
+        "value": "A thread can drink tea while executing",
+        "score":[
+          {
+            "type": "P",
+            "score": 1
+          },
+          {
+            "type": "IC",
+            "score": 1
+          }
+        ],
         "nextQuestionId": 2
       }
     ]
@@ -40,69 +38,23 @@
     "question": "Second Question",
     "options": [
       {
-        "value": "A thread can drink coffee while executing",
-        "type": "IR",
-        "score": 1,
-        "nextQuestionId": 3 
-      },
-      {
-        "value": "Processes are managed by the operating system",
-        "type": "P",
-        "score": 1,
-        "nextQuestionId": 3 
-      },
-      {
-        "value": "Threads allow parallelism within a process",
-        "type": "IC",
-        "score": 1,
-        "nextQuestionId": 3 
-      },
-      {
-        "value": "Context switching has overhead",
-        "type": "MF",
-        "score": 1,
-        "nextQuestionId": 3 
-      },
-      {
-        "value": "Mutex can prevent race conditions",
-        "type": "UA",
-        "score": 1,
-        "nextQuestionId": 3 
-      }
-    ]
-  },
-  {
-    "id": 3,
-    "question": "Third Question",
-    "options": [
-      {
-        "value": "A thread can drink coffee while executing",
-        "type": "IR",
-        "score": 1,
+        "value": "A thread can drink tea while executing",
+        "score": [
+          {
+            "type": "IR",
+            "score": 1
+            }
+          ],
         "nextQuestionId": -1 
       },
       {
         "value": "Processes are managed by the operating system",
-        "type": "P",
-        "score": 1,
-        "nextQuestionId": -1 
-      },
-      {
-        "value": "Threads allow parallelism within a process",
-        "type": "IC",
-        "score": 1,
-        "nextQuestionId": -1 
-      },
-      {
-        "value": "Context switching has overhead",
-        "type": "MF",
-        "score": 1,
-        "nextQuestionId": -1
-      },
-      {
-        "value": "Mutex can prevent race conditions",
-        "type": "UA",
-        "score": 1,
+        "score": [
+          {
+            "type": "P",
+            "score": 1
+        }
+        ],
         "nextQuestionId": -1 
       }
     ]

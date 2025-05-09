@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { calculateScore, appendToCsv } from '../utils/scoreUtils'; // Make sure path is correct
+import { calculateScore, appendToCsv, Choice } from '../utils/scoreUtils'; // Make sure path is correct
 import { Radar } from 'react-chartjs-2';
 import {
     Chart as ChartJS,
@@ -23,15 +23,6 @@ ChartJS.register(
     Tooltip,
     Legend
 );
-
-// Define the structure for answer logs passed via state
-interface Choice {
-    questionId: string;
-    selectedOption: string;
-    correctOption: string;
-    type: string; // This should be one of the keys: P, IC, MF, UA, SL, IR
-    score: number; // The score contribution for this answer
-}
 
 // Define the structure for the score dictionary
 // Explicitly listing keys for clarity and potential future use
@@ -75,7 +66,7 @@ export default function Summary() {
     // const answerLogs = [];
 
     useEffect(() => {
-        if ((answerLogs && answerLogs.length > 0) || true) { // remove if the choice schema is availiable
+        if (answerLogs && answerLogs.length > 0) { // remove if the choice schema is availiable
             try {
                 const calculatedScores = calculateScore(answerLogs);
                 // Ensure all expected keys are present, even if score is 0
