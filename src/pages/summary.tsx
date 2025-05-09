@@ -15,6 +15,30 @@ import {
     Legend,
     ChartOptions, // Import ChartOptions type
 } from 'chart.js';
+import dimensionDescription from '../dimensionDescription.json';
+import planetList from '../planetDescription.json';
+
+type ScoreDimension = "P" | "IC" | "MF" | "UA" | "SL" | "IR";
+
+type Planet = {
+    "id": number;
+    "planet": string;
+    "image": string;
+    "Description":string;
+    "stat": PlanetStat;
+}
+
+type StatLevel = "High" | "Low" | "Balance";
+interface PlanetStat {
+    "P": StatLevel;
+    "IC": StatLevel;
+    "MF": StatLevel;
+    "UA": StatLevel;
+    "SL": StatLevel;
+    "IR": StatLevel;
+}
+
+type StatCriteria = Partial<PlanetStat>;
 
 // Register Chart.js components
 ChartJS.register(
@@ -28,7 +52,6 @@ ChartJS.register(
 
 // Define the structure for the score dictionary
 // Explicitly listing keys for clarity and potential future use
-type ScoreDimension = "P" | "IC" | "MF" | "UA" | "SL" | "IR";
 type ScoreDict = Record<ScoreDimension, number>;
 
 // Define full names for dimensions for better readability
@@ -41,11 +64,65 @@ const dimensionNames: Record<ScoreDimension, string> = {
     "IR": "Indulgence",
 };
 
+const HighBar = 2;
+const LowBar = -2;
+
+function getScoreLevel(
+    score: number
+): StatLevel{
+    if (score > HighBar) {
+        return "High";
+    } else if (score < LowBar) {
+        return "Low";
+    } else { // score must be 2
+        return "Balance";
+    }
+}
+
+function getPlanetsByStatCriteria(
+    criteria: StatCriteria
+): Planet | null{
+    if (!planetList || planetList.length === 0) {
+        return null; // No planets to choose from
+    }
+
+    // If criteria is somehow empty (though it shouldn't be with PlanetStat type)
+    if (Object.keys(criteria).length === 0) {
+        return planetList[0]; // Or null, depending on desired behavior for empty criteria
+    }
+
+    let bestMatchPlanet: Planet | null = null;
+    let highestMatchCount = -1;
+
+    for (const planet of planetList) {
+        let currentMatchCount = 0;
+        // Since criteria is PlanetStat, all keys are guaranteed to be present.
+        (Object.keys(criteria) as Array<keyof PlanetStat>).forEach(key => {
+            if (planet.stat[key] === criteria[key]) {
+                currentMatchCount++;
+            }
+        });
+
+        if (currentMatchCount > highestMatchCount) {
+            highestMatchCount = currentMatchCount;
+            bestMatchPlanet = planet;
+        }
+    }
+
+    // If no planet had any matches (highestMatchCount stayed 0 or -1)
+    // but there are planets, bestMatchPlanet would be the first one.
+    // If you want to return null if no stats matched at all (match count 0),
+    // you could add: if (highestMatchCount === 0 && bestMatchPlanet) return null;
+    // But typically, even 0 matches means the "closest" is just a very poor match.
+    // If bestMatchPlanet is still null here AND planets.length > 0,
+    // it implies the loop didn't run or update, which is unlikely.
+    // So, if planets are available, bestMatchPlanet should be one of them.
+    return bestMatchPlanet;
+}
 
 export default function Summary() {
     const location = useLocation();
     const navigate = useNavigate();
-    const [userName, setUserName] = useState('');
     // Initialize with default structure to prevent errors before calculation
     const [scoreDict, setScoreDict] = useState<ScoreDict>({
         "P": 0, "IC": 0, "MF": 0, "UA": 0, "SL": 0, "IR": 0,
@@ -53,6 +130,8 @@ export default function Summary() {
     const [isSubmitted, setIsSubmitted] = useState(false); // Track if data has been saved
 
     const [planetImg, setplanetImg] = useState("/vite.svg");
+    const [planetName, setplanetName] = useState("planet name");
+    const [planetDescription, setplanetDescription] = useState("planet name");
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [guessSubmitted, setGuessSubmitted] = useState(false);
@@ -81,7 +160,20 @@ export default function Summary() {
                     "IR": calculatedScores["IR"] ?? 0,
                 };
                 setScoreDict(fullScores);
+                const criteria: PlanetStat = {
+                    "P": getScoreLevel(calculatedScores["P"]) ?? "Balance",
+                    "IC": getScoreLevel(calculatedScores["IC"]) ?? "Balance",
+                    "MF": getScoreLevel(calculatedScores["MF"]) ?? "Balance",
+                    "UA": getScoreLevel(calculatedScores["UA"]) ?? "Balance",
+                    "SL": getScoreLevel(calculatedScores["SL"]) ?? "Balance",
+                    "IR": getScoreLevel(calculatedScores["IR"]) ?? "Balance",
+                };
+                const planet = getPlanetsByStatCriteria(criteria);
+                setplanetName(planet.planet);
+                setplanetImg(planet.image);
+                setplanetDescription(planet.Description);
                 setError(null);
+                // for(i of calculatedScores)
             } catch (err) {
                 console.error("Error calculating scores:", err);
                 setError("Could not calculate scores.");
@@ -94,6 +186,7 @@ export default function Summary() {
         setIsLoading(false);
 
         // set up showing the planet detail
+
 
     }, [answerLogs, navigate]); // Add navigate as dependency if using it in effect
 
@@ -175,16 +268,43 @@ export default function Summary() {
             <CenteredCircularImage
                 imagePath={planetImg}// Path relative to the public folder
                 altText="John Doe's Avatar"
-                size={64} // This will make the image w-64 h-64 (16rem x 16rem)
+                size={48} // This will make the image w-64 h-64 (16rem x 16rem)
             />
+            <div className="justify-self-center justify-items-center dark:bg-gray-800  sm:p-2 rounded-lg shadow-md my-4 flex-auto w-1/3">
+                <h2 className="text-xl font-semibold  dark:text-white">{planetName}</h2>
+            </div>
             {/* this is the description sections */}
-            <div className="bg-white p-4 sm:p-6 rounded-lg shadow-md">
-                <p>
-                    {}
-                </p>
+            <div className="dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow-md">
+            <h2 className="text-xl font-semibold  dark:text-white mb-4">your planet</h2>
+            <p className='text-white'>{planetDescription}</p>
+            <h2 className="text-xl font-semibold  dark:text-white mb-4">cultural details</h2>
+            {
+                dimensionDescription.map(
+                    dim => {
+                    const currentScore = scoreDict[dim.type];
+                    let descriptionText = '';
+                    // 2. Determine the description text based on the score
+                    if (currentScore === undefined) {
+                        // Handle cases where the score for a type might not exist
+                        descriptionText = `Score not available for type: ${dim.type}`;
+                    } else if (currentScore > HighBar) {
+                        descriptionText = dim.high;
+                    } else if (currentScore < LowBar) {
+                        descriptionText = dim.low;
+                    } else { // currentScore must be 2
+                        descriptionText = dim.balance;
+                    }
+                    return (
+                        <p className="dark:text-white" key={dim.type}> {/* Use a unique key, dim.type is a good candidate if it's unique */}
+                            {descriptionText}
+                        </p>
+                    );
+                }
+            )
+            }
             </div>
             {/* this is bottom section */}
-            <div className="justify-center mx-6 my-6 grid grid-cols-1 md:grid-cols-2 items-start w-full">
+            <div className="justify-center my-6 grid grid-cols-1 md:grid-cols-2 items-start w-full">
                  {/* Radar Chart Section //guesses submit then show */}
                 <div className="justify-center dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow-md dark:text-white w-full mb-6">
                     <h2 className="text-xl font-semibold  dark:text-white mb-4">Score Visualization</h2>
