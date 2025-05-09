@@ -2,12 +2,7 @@ import React, { useState, useEffect } from 'react';
 import quizData from '../quizData.json';
 import { useNavigate } from 'react-router-dom';
 
-type Choice = {
-  value: string;
-  type: string;
-  score: number;
-  nextQuestionId: number;
-};
+import {Choice} from '../utils/scoreUtils';
 
 type Question = {
   id: number;
