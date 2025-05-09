@@ -1,38 +1,38 @@
 [
     {
-        "type":"",
-        "high":"",
-        "balance":"",
-        "low":""
+        "type":"P",
+        "high":"high",
+        "balance":"balance",
+        "low":"low"
     },
     {
-        "type":"",
-        "high":"",
-        "balance":"",
-        "low":""
+        "type":"IC",
+        "high":"high",
+        "balance":"balance",
+        "low":"low"
     },
     {
-        "type":"",
-        "high":"",
-        "balance":"",
-        "low":""
+        "type":"MF",
+        "high":"high",
+        "balance":"balance",
+        "low":"low"
     },
     {
-        "type":"",
-        "high":"",
-        "balance":"",
-        "low":""
+        "type":"UA",
+        "high":"high",
+        "balance":"balance",
+        "low":"low"
     },
     {
-        "type":"",
-        "high":"",
-        "balance":"",
-        "low":""
+        "type":"SL",
+        "high":"high",
+        "balance":"balance",
+        "low":"low"
     },
     {
-        "type":"",
-        "high":"",
-        "balance":"",
-        "low":""
+        "type":"IR",
+        "high":"high",
+        "balance":"balance",
+        "low":"low"
     }
 ]

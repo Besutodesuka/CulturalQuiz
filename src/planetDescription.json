@@ -1,11 +1,11 @@
 [
     {
         "id": 1,
-        "planet": "plannet name",
-        "image": "",
-        "Description":"",
+        "planet": "ultra mooms",
+        "image": "/pngtree-gray-network-placeholder-png-image_3416659.jpg",
+        "Description":"Excuse me but do you like Wendys?\n Yes why?\nBecause you are going to love when deez nuts hit you in the face",
         "stat": {
-            "P": "High", "IC": "Low", "MF": "Low", "UA": "Low", "SL": "Low", "IR": "Low",
+            "P": "High", "IC": "Low", "MF": "Low", "UA": "Low", "SL": "Low", "IR": "Low"
         }
     } 
 ]
