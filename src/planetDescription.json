@@ -1,0 +1,11 @@
+[
+    {
+        "id": 1,
+        "planet": "plannet name",
+        "image": "",
+        "Description":"",
+        "stat": {
+            "P": "High", "IC": "Low", "MF": "Low", "UA": "Low", "SL": "Low", "IR": "Low",
+        }
+    } 
+]
