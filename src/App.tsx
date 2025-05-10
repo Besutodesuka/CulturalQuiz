@@ -4,6 +4,7 @@ import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import Quiz from './pages/quiz'; // Example: Create this component
 import Summary from './pages/summary'; // Example: Create this component
 import HomePage from './pages/HomePage';
+import IntroPage from './pages/introPage';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/quiz" element={<Quiz />} />
         <Route path="/summary" element={<Summary />} />
+        <Route path="/intropage" element={<IntroPage />} />
         {/* Add other routes as needed */}
         <Route path="*" element={<div>404 - Page Not Found</div>} /> {/* Catch-all route */}
       </Routes>
