@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { addFeedback } from '../utils/feedback';
 
 function RatingScaleWithSubmit() {
   const [selectedValue, setSelectedValue] = useState(null); // To store the selected rating (1-5)
@@ -14,7 +15,7 @@ function RatingScaleWithSubmit() {
       console.log('Rating submitted:', selectedValue);
       alert(`You submitted a rating of: ${selectedValue}`);
       // Here you would typically send the selectedValue to a backend or parent component
-
+      addFeedback(selectedValue);
     } else {
       alert('Please select a rating before submitting.');
     }
@@ -35,7 +36,7 @@ function RatingScaleWithSubmit() {
                   name="rating" // All radio buttons share the same name
                   type="radio"
                   value={value}
-                  checked={selectedValue === value}
+                checked={selectedValue === value}
                   onChange={handleRadioChange}
                   className="h-4 w-4 text-indigo-600 dark:text-indigo-400 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-500 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:ring-2 dark:focus:ring-offset-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
                 />
