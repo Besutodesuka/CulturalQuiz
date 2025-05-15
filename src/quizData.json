@@ -1,32 +1,24 @@
 [
   {
     "id": 1,
-    "question": "First Question",
+    "question": "How will you begin exploring this world?",
     "options": [
       {
-        "value": "A thread can drink coffee while executing",
+        "value": "Alone - you want to experience everything through your own eyes first.",
         "score":[
           {
-            "type": "P",
-            "score": 5
-          },
-          {
             "type": "IC",
-            "score": 1
+            "score": 2
           }
         ],
         "nextQuestionId": 2
       },
       {
-        "value": "A thread can drink tea while executing",
+        "value": "In a group - it's better to share discoveries and watch each other's backs.",
         "score":[
           {
-            "type": "P",
-            "score": 1
-          },
-          {
             "type": "IC",
-            "score": 1
+            "score": 0
           }
         ],
         "nextQuestionId": 2
@@ -35,25 +27,293 @@
   },
   {
     "id": 2,
-    "question": "Second Question",
+    "question": "You prepare to take your first step into the unknown. The world ahead shimmers with floating stones, glowing plants, and strange winds. There's no map. No guide. Just possibilities.\n\nBefore beginning your exploration, how do you choose to approach it?",
     "options": [
       {
-        "value": "A thread can drink tea while executing",
+        "value": "Boldly - the mystery excites you. You'd rather discover things as you go and adapt along the way.",
+        "score": [
+          {
+            "type": "UA",
+            "score": 0
+          }
+        ],
+        "nextQuestionId": 3 
+      },
+      {
+        "value": "Carefully - you prefer to plan your path, set clear steps, and know what you're walking into.",
+        "score": [
+          {
+            "type": "UA",
+            "score": 3
+          }
+        ],
+        "nextQuestionId": 3 
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "question": "Just before the other explorers begin their journey, the glowing being turns to you.\n\"They await your guidance. How should other groups make decisions?\"\n\nWhat kind of structure will you choose for them?",
+    "options": [
+      {
+        "value": "Let them decide together - every voice should carry equal weight.",
+        "score":[
+          {
+            "type": "P",
+            "score": 0
+          }
+        ],
+        "nextQuestionId": 4
+      },
+      {
+        "value": "Appoint a leader - one clear voice will help them stay focused.",
+        "score":[
+          {
+            "type": "P",
+            "score": 3
+          }
+        ],
+        "nextQuestionId": 4
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "question": "The exploration ends. With the land mapped, it's time to settle.\nYou and the others begin to build - not just shelters, but something that feels like a home.\nYou've spent days building the village together. Along the way, you grow close to those around you. \nBut once the work is done... what comes next?\n\nWhen the village is finished, how do you see these bonds?",
+    "options": [
+      {
+        "value": "I want to stay connected - even after the work ends.",
+        "score": [
+          {
+            "type": "SL",
+            "score": 3
+          }
+        ],
+        "nextQuestionId": 5 
+      },
+      {
+        "value": "We're close for now, but I'm okay drifting apart after.",
+        "score": [
+          {
+            "type": "SL",
+            "score": 0
+          }
+        ],
+        "nextQuestionId": 5 
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "question": "Weeks pass, and the settlers adapt. One day, a group discovers a glowing orb that generates energy and light. Its power is immense.\n\nHow will you share this rare magical energy?",
+    "options": [
+      {
+        "value": "Share it equally with all.",
+        "score":[
+          {
+            "type": "IC",
+            "score": 0
+          },
+          {
+            "type": "MF",
+            "score": 0
+          }
+        ],
+        "nextQuestionId": 6
+      },
+      {
+        "value": "Distribute based on effort and contribution.",
+        "score":[
+          {
+            "type": "IC",
+            "score": 2
+          },
+          {
+            "type": "MF",
+            "score": 3
+          }
+        ],
+        "nextQuestionId": 6
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "question": "But peace doesn't last.\nA great storm is approaching. The magic mirror will show how your people respond - with freedom, or with control.\n\nWhat should the magic Mirror reflect about your society?",
+    "options": [
+      {
+        "value": "People should decide for themselves. Control isn't always needed.",
         "score": [
           {
             "type": "IR",
-            "score": 1
-            }
-          ],
-        "nextQuestionId": -1 
+            "score": 3
+          }
+        ],
+        "nextQuestionId": 7
       },
       {
-        "value": "Processes are managed by the operating system",
+        "value": "People need structure. Without it, chaos will come.",
+        "score": [
+          {
+            "type": "IR",
+            "score": 0
+          }
+        ],
+        "nextQuestionId": 7 
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "question": "An invention contest begins to stop the looming disaster. When it ends, one creation is chosen to protect the planet.\n\nHow will you celebrate?",
+    "options": [
+      {
+        "value": "Honor the winner with glory and praise.",
+        "score":[
+          {
+            "type": "MF",
+            "score": 3
+          }
+        ],
+        "nextQuestionId": 8
+      },
+      {
+        "value": "Comfort those who lost - their efforts matter too.",
+        "score":[
+          {
+            "type": "MF",
+            "score": 0
+          }
+        ],
+        "nextQuestionId": 8
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "question": "But there's a problem: the winning technology might have dangerous side effects. It could protect the planet - or destabilize the terrain. There's no time for full testing.\n\nWill you activate the invention now?",
+    "options": [
+      {
+        "value": "Use it - the threat is urgent.",
+        "score": [
+          {
+            "type": "UA",
+            "score": 0
+          }
+        ],
+        "nextQuestionId": 9 
+      },
+      {
+        "value": "Wait - the unknown risk is too high.",
+        "score": [
+          {
+            "type": "UA",
+            "score": 3
+          }
+        ],
+        "nextQuestionId": 9 
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "question": "The invention succeeds. The storm fades. Your village is safe. \nBut you’re not alone on this planet - other communities exist, scattered across distant lands.\nThe device can be connected to the planet's core to protect everyone.\nBut doing so means giving up your village's exclusive control over it.\n\nWhat will you choose?",
+    "options": [
+      {
+        "value": "Share it with the planet - knowing your contribution brings safety to all.",
+        "score":[
+          {
+            "type": "IC",
+            "score": 0
+          }
+        ],
+        "nextQuestionId": 10
+      },
+      {
+        "value": "Keep it for your village - we built it, and our safety should come first.",
+        "score":[
+          {
+            "type": "IC",
+            "score": 2
+          }
+        ],
+        "nextQuestionId": 10
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "question": "Your choice echoes through the land.\nThat night, two stars align. From the sky, starlight tokens rain down - fragments of pure potential. You receive a handful, just in time for the festival tonight.\n\nWhat will you do with your tokens?",
+    "options": [
+      {
+        "value": "Save them for the future.",
+        "score": [
+          {
+            "type": "SL",
+            "score": 3
+          }
+        ],
+        "nextQuestionId": 11 
+      },
+      {
+        "value": "Spend them now, for today's joy.",
+        "score": [
+          {
+            "type": "SL",
+            "score": 3
+          }
+        ],
+        "nextQuestionId": 11 
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "question": "Later, two world-shaping technologies are developed. You must pick one to introduce:\n\nChoose your planet's next step.",
+    "options": [
+      {
+        "value": "Create entertainment hubs - immersive games, joy domes, and dream cinemas.",
+        "score":[
+          {
+            "type": "IR",
+            "score": 3
+          }
+        ],
+        "nextQuestionId": 12
+      },
+      {
+        "value": "Develop practical tech - farming enhancement, weather control, and meditation halls.",
+        "score":[
+          {
+            "type": "IR",
+            "score": 0
+          }
+        ],
+        "nextQuestionId": 12
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "question": "At last, the glowing being returns one final time.\nThe world is settling. Communities are forming. But one question remains:\nHow should this planet be governed?\n\nWhat system will guide your world from now on?",
+    "options": [
+      {
+        "value": "A council of chosen voices - leadership should exist, but listen and share power.",
         "score": [
           {
             "type": "P",
-            "score": 1
-        }
+            "score": 0
+          }
+        ],
+        "nextQuestionId": -1 
+      },
+      {
+        "value": "Elect a strong leader - decisions are faster and more stable when power is clearly defined.",
+        "score": [
+          {
+            "type": "P",
+            "score": 3
+          }
         ],
         "nextQuestionId": -1 
       }

@@ -1,38 +1,38 @@
 [
     {
-        "type":"P",
-        "high":"high",
-        "balance":"balance",
-        "low":"low"
-    },
-    {
         "type":"IC",
-        "high":"high",
-        "balance":"balance",
-        "low":"low"
+        "high":"Creatures live in close-knit colonies, where cooperation is key. The group's well-being comes first, and success is measured by the community's prosperity rather than individual achievement.",
+        "balance":"This is impossible!!!",
+        "low":"Creatures prioritize solitude and self-reliance. They live alone, make independent decisions, and focus on personal success, helping others only when it aligns with their own needs."
     },
     {
         "type":"MF",
-        "high":"high",
-        "balance":"balance",
-        "low":"low"
+        "high":"You value achievement, progress, and performance. Like a mountain peak, you rise boldly and purposefully, always reaching for new heights and embracing competition to succeed.",
+        "balance":"You value both achievement and compassion. Like a river through a valley, you combine strength with grace, understanding that the balance between competition and care is essential.",
+        "low":"You prioritize cooperation, care, and quality of life. Like a garden at dawn, you thrive in harmony, nurturing relationships and valuing connection over competition."
     },
     {
         "type":"UA",
-        "high":"high",
-        "balance":"balance",
-        "low":"low"
+        "high":"A grid-like world where every mountain, river, and forest follows a precise pattern. Nothing is left to chance, and anomalies are swiftly corrected.",
+        "balance":"Seasons flow in a gentle rhythm, with a balance of wild growth and cultivated order, where flexibility coexists with structure.",
+        "low":"A restless world of shifting sands and unpredictable weather, where chaos is embraced and spontaneity is part of the charm."
     },
     {
         "type":"SL",
-        "high":"high",
-        "balance":"balance",
-        "low":"low"
+        "high":"A world where future rewards are paramount. Everything is carefully planned, and long-term success is pursued through perseverance, foresight, and a commitment to future growth, while the present is shaped by long-standing traditions.",
+        "balance":"A world that blends respect for tradition with an eye toward the future, where short-term results are balanced with long-term planning. Flexibility is key, with a focus on maintaining continuity while adapting to change.",
+        "low":"A world focused on immediate gratification and the present, where traditions hold little weight and future planning is minimal. Spontaneity rules and actions are driven by the moment."
     },
     {
         "type":"IR",
-        "high":"high",
-        "balance":"balance",
-        "low":"low"
+        "high":"A lush, vibrant world bursting with blooming flowers, cascading waterfalls, and radiant colors-nature celebrates in full bloom.",
+        "balance":"Bright meadows meet structured plains, offering moments of joy within a world of thoughtful order and balance.",
+        "low":"A muted world of grays and browns, where nature is subdued, and every stream flows within carefully carved channels."
+    },
+    {
+        "type":"P",
+        "high":"A world of towering spires and deep shadows, where sharp hierarchies dominate the landscape and power is clearly defined.",
+        "balance":"Soft plateaus create subtle layers across the land, showing a balance between hierarchy and equality.",
+        "low":"A seamless horizon where all landforms share the same height, reflecting equality and minimal distinction."
     }
 ]
