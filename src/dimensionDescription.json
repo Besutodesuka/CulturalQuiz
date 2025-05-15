@@ -1,9 +1,9 @@
 [
     {
         "type":"IC",
-        "high":"Creatures live in close-knit colonies, where cooperation is key. The group's well-being comes first, and success is measured by the community's prosperity rather than individual achievement.",
-        "balance":"This is impossible!!!",
-        "low":"Creatures prioritize solitude and self-reliance. They live alone, make independent decisions, and focus on personal success, helping others only when it aligns with their own needs."
+        "high":"Creatures prioritize solitude and self-reliance. They live alone, make independent decisions, and focus on personal success, helping others only when it aligns with their own needs.",
+        "balance":"Creatures value both independence and community. They live in small groups where personal goals are respected, but support is given when needed. True strength comes from balancing self-reliance with collective care.",
+        "low":"Creatures live in close-knit colonies, where cooperation is key. The group's well-being comes first, and success is measured by the community's prosperity rather than individual achievement."
     },
     {
         "type":"MF",
