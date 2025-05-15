@@ -4,6 +4,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { calculateScore, appendToCsv, Choice } from '../utils/scoreUtils'; // Make sure path is correct
 import CenteredCircularImage from '../component/image';
 import RatingScaleWithSubmit from '../component/radio';
+import introGif from '/FallingStar.gif';
+const backgroundImage = `url(${introGif})`;
 import { Radar } from 'react-chartjs-2';
 import {
     Chart as ChartJS,
@@ -261,10 +263,9 @@ export default function Summary() {
     }
 
     return (
-        <div className="container mx-auto p-4 sm:p-6 bg-gray-50 min-h-screen">
-            {/* <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-                Quiz Results & Analysis
-            </h1> */}
+        <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-6 relative"
+        style={{backgroundImage}}
+        >
             <CenteredCircularImage
                 imagePath={planetImg}// Path relative to the public folder
                 altText="John Doe's Avatar"
@@ -274,37 +275,35 @@ export default function Summary() {
                 <h2 className="text-xl font-semibold  dark:text-white">{planetName}</h2>
             </div>
             {/* this is the description sections */}
-            <div className="dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow-md">
-            <h2 className="text-xl font-semibold  dark:text-white mb-4">your planet</h2>
-            <p className='text-white'>{planetDescription}</p>
-            <h2 className="text-xl font-semibold  dark:text-white mb-4">cultural details</h2>
-            {
-                dimensionDescription.map(
-                    dim => {
+            <div className="dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow-md w-4/5">
+                <h2 className="text-xl font-semibold  dark:text-white mb-4">your planet</h2>
+                <p className='text-white'>{planetDescription}</p>
+                <h2 className="text-xl font-semibold  dark:text-white mb-4">cultural details</h2>
+                {
+                (() => {
+                    const descriptions = dimensionDescription.map(dim => {
                     const currentScore = scoreDict[dim.type];
-                    let descriptionText = '';
-                    // 2. Determine the description text based on the score
                     if (currentScore === undefined) {
-                        // Handle cases where the score for a type might not exist
-                        descriptionText = `Score not available for type: ${dim.type}`;
+                        return `Score not available for type: ${dim.type}`;
                     } else if (currentScore > HighBar) {
-                        descriptionText = dim.high;
+                        return dim.high;
                     } else if (currentScore < LowBar) {
-                        descriptionText = dim.low;
-                    } else { // currentScore must be 2
-                        descriptionText = dim.balance;
+                        return dim.low;
+                    } else {
+                        return dim.balance;
                     }
+                    });
+
                     return (
-                        <p className="dark:text-white" key={dim.type}> {/* Use a unique key, dim.type is a good candidate if it's unique */}
-                            {descriptionText}
-                        </p>
+                    <p className="dark:text-white">
+                        {descriptions.join(' ')} {/* Join with space or change to '\n' if line breaks are preferred */}
+                    </p>
                     );
+                })()
                 }
-            )
-            }
             </div>
             {/* this is bottom section */}
-            <div className="justify-center my-6 grid grid-cols-1 md:grid-cols-2 items-start w-full">
+            <div className="items-center my-6 grid grid-cols-1 md:grid-cols-2 w-4/5">
                  {/* Radar Chart Section //guesses submit then show */}
                 <div className="justify-center dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow-md dark:text-white w-full mb-6">
                     <h2 className="text-xl font-semibold  dark:text-white mb-4">Score Visualization</h2>
