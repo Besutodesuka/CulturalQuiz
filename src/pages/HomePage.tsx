@@ -24,7 +24,7 @@ function HomePage() {
 
         {/* Link wrapping the button */}
         <Link
-          to="/quiz"
+          to="/intropage"
           className="inline-block" // Needed for transform/transition effects on the link itself if desired
         >
           <button
