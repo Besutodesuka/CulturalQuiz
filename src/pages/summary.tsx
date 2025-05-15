@@ -67,15 +67,15 @@ const dimensionNames: Record<ScoreDimension, string> = {
     "IR": "Indulgence",
 };
 
-const HighBar = 2;
-const LowBar = -2;
+const HighBar = 4;
+const LowBar = 2;
 
 function getScoreLevel(
     score: number
 ): StatLevel{
-    if (score > HighBar) {
+    if (score >= HighBar) {
         return "High";
-    } else if (score < LowBar) {
+    } else if (score <= LowBar) {
         return "Low";
     } else { // score must be 2
         return "Balance";
@@ -164,12 +164,12 @@ export default function Summary() {
                 };
                 setScoreDict(fullScores);
                 const criteria: PlanetStat = {
-                    "P": getScoreLevel(calculatedScores["P"]) ?? "Balance",
-                    "IC": getScoreLevel(calculatedScores["IC"]) ?? "Balance",
-                    "MF": getScoreLevel(calculatedScores["MF"]) ?? "Balance",
-                    "UA": getScoreLevel(calculatedScores["UA"]) ?? "Balance",
-                    "SL": getScoreLevel(calculatedScores["SL"]) ?? "Balance",
-                    "IR": getScoreLevel(calculatedScores["IR"]) ?? "Balance",
+                    "P": getScoreLevel(calculatedScores["P"]),
+                    "IC": getScoreLevel(calculatedScores["IC"]),
+                    "MF": getScoreLevel(calculatedScores["MF"]),
+                    "UA": getScoreLevel(calculatedScores["UA"]),
+                    "SL": getScoreLevel(calculatedScores["SL"]),
+                    "IR": getScoreLevel(calculatedScores["IR"]),
                 };
                 const planet = getPlanetsByStatCriteria(criteria);
                 setplanetName(planet.planet);
