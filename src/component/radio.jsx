@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { addFeedback } from '../utils/feedback';
+import { useNavigate } from 'react-router-dom';
 
 function RatingScaleWithSubmit() {
   const [selectedValue, setSelectedValue] = useState(null); // To store the selected rating (1-5)
   const ratingOptions = [1, 2, 3, 4, 5]; // The choices
+
+  const navigate = useNavigate();
 
   const handleRadioChange = (event) => {
     setSelectedValue(Number(event.target.value)); // Store value as a number
@@ -16,13 +19,14 @@ function RatingScaleWithSubmit() {
       alert(`You submitted a rating of: ${selectedValue}`);
       // Here you would typically send the selectedValue to a backend or parent component
       addFeedback(selectedValue);
+      navigate('/');
     } else {
       alert('Please select a rating before submitting.');
     }
   };
 
   return (
-    <div className="bg-white mx-6 dark:bg-gray-800 shadow-md rounded-lg p-6 sm:p-8 w-auto max-w-xs flex-1 h-auto">
+    <div className="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6 sm:p-8  max-w-xs flex-1 w-auto h-auto">
       <form onSubmit={handleSubmit}>
         <fieldset className="border-none p-0 m-0">
           <legend className="text-lg font-medium text-gray-900 dark:text-white mb-4">

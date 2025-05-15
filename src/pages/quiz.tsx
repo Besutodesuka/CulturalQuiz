@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import quizData from '../quizData.json';
 import { useNavigate } from 'react-router-dom';
-
+import newBackground from '/StaticStar.jpg';
 import {Choice} from '../utils/scoreUtils';
 
 type Question = {
@@ -10,6 +10,8 @@ type Question = {
   options: Choice[]; // use the Choice type here
   name?: string; // you can set this manually or derive it elsewhere
 };
+
+const backgroundImage = `url(${newBackground})`;
 
 const Quiz: React.FC = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -79,84 +81,61 @@ const Quiz: React.FC = () => {
     setCurrentQuestion(prevId);
   };
 
-  // Calculate score in real-time
-  // const correctAnswers = Object.keys(answers).reduce(
-  //   (total, key) =>
-  //     answers[parseInt(key)]?.value === quizData[parseInt(key)].answer
-  //       ? total + 1
-  //       : total,
-  //   0
-  // );
-
-
-  // Calculate progress
-  // const progress = ((correctAnswers / quizData.length) * 100).toFixed(1);
-
+//  bg-gradient-to-br from-purple-900 via-indigo-800 to-black
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-6 relative">
-      {/* Progress Bar on Top Right */}
-      {/* <div className="absolute top-4 right-4 bg-white shadow-md p-2 rounded-lg"> */}
-        {/* <p className="text-sm font-semibold">Correct: {correctAnswers} / {quizData.length}</p>
-        <div className="w-32 bg-gray-200 h-3 rounded-lg mt-1">
-          <div
-            className="bg-green-500 h-3 rounded-lg transition-all"
-            style={{ width: `${progress}%` }}
-          ></div>
-        </div> */}
-      {/* </div> */}
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-6 relative"
+    style={{ backgroundImage }}
+    >
+      <div className="min-h-screen p-8 flex justify-center items-center">
+        <div className="backdrop-blur-md bg-white/10 border border-white/20 shadow-2xl rounded-3xl p-10 w-full max-w-4xl text-white font-sans">
+          
+          <h1 className="text-3xl font-extrabold text-center text-purple-200 mb-8 leading-snug drop-shadow-lg">
+            {question.question} <br /> <span className="text-purple-300">{question.name}</span>
+          </h1>
 
-      <div className="bg-white shadow-lg rounded-2xl p-6 max-w-lg w-full">
-        <h1 className="text-2xl font-bold text-gray-800 mb-6 text-center">
-          {question.question} {question.name}
-        </h1>
-        <div className="space-y-4">
-          {shuffledOptions.map((option) => (
-            <button
-              key={option.value}
-              onClick={() => handleAnswer(option)}
-              className={`p-4 w-full text-left border rounded-lg transition-all duration-300 
-             ${answers[currentQuestion]?.value === option.value
-                  ? 'bg-blue-200 border-blue-500' // Selected = blue
-                  : 'bg-gray-50 hover:bg-gray-200 border-gray-300' // Unselected = gray + hover
-                }`}
-            >
-              {option.value}
-            </button>
-          ))}
-
-        </div>
-
-        {answers[currentQuestion] && (
-          <div className="mt-6 p-4 border-t bg-gray-50 rounded-lg">
-            {/* {answers[currentQuestion]?.value === question.answer ? (
-              <p className="text-green-600 font-medium">✅ Correct! {question.reason}</p>
-            ) : (
-              <p className="text-red-600 font-medium">
-                ❌ Incorrect. The correct answer is: <strong>{question.answer}</strong>. {question.reason}
-              </p>
-            )} */}
-
-
-            <div className="mt-4 flex justify-between">
+          <div className="space-y-6">
+            {shuffledOptions.map((option) => (
               <button
-                onClick={prevQuestion}
-                className="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition"
-              >
-                ⬅ Previous
-              </button>
-              <button
-                onClick={nextQuestion}
-                disabled={!answers[currentQuestion]} // Prevent moving forward until an answer is selected
-                className={`px-4 py-2 rounded-lg transition ${answers[currentQuestion] ? 'bg-blue-500 text-white hover:bg-blue-600' : 'bg-gray-300 text-gray-600 cursor-not-allowed'
+                key={option.value}
+                onClick={() => handleAnswer(option)}
+                className={`w-full text-left text-lg font-medium px-6 py-4 rounded-xl transition-all duration-300 
+                  ${
+                    answers[currentQuestion]?.value === option.value
+                      ? 'bg-purple-600/80 border border-purple-300 shadow-lg'
+                      : 'bg-white/10 hover:bg-white/20 border border-white/30'
                   }`}
               >
-                Next ➡
+                {option.value}
               </button>
-            </div>
+            ))}
           </div>
-        )}
+
+          {answers[currentQuestion] && (
+            <div className="mt-8 p-6 bg-white/10 border-t border-white/20 rounded-xl shadow-inner">
+              <div className="flex justify-between items-center mt-4">
+                <button
+                  onClick={prevQuestion}
+                  className="px-5 py-3 bg-purple-700 text-white rounded-lg hover:bg-purple-600 transition shadow-md"
+                >
+                  ⬅ Previous
+                </button>
+                <button
+                  onClick={nextQuestion}
+                  disabled={!answers[currentQuestion]}
+                  className={`px-5 py-3 rounded-lg transition shadow-md ${
+                    answers[currentQuestion]
+                      ? 'bg-indigo-600 text-white hover:bg-indigo-500'
+                      : 'bg-gray-400 text-gray-200 cursor-not-allowed'
+                  }`}
+                >
+                  Next ➡
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </div> 
   );
 };
 

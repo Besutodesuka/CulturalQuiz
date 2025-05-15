@@ -1,0 +1,26 @@
+[
+    {
+        "dim": "Power Distance",
+        "text": "It shows how comfortable people are with unequal power and authority in a group or society. In high PDI countries, people accept clear hierarchies. Superiors make decisions without needing input, and it's normal for children or employees to obey without question. Respect for authority is expected. In low PDI countries, people prefer equality. Parents are open to children speaking up, and managers often ask employees for opinions. Power is shared more equally, and relationships are more democratic. Simply put, high PDI means more acceptance of authority and inequality, while low PDI means more equality and open communication."
+    },
+    {
+        "dim": "Individualism vs Collectivism",
+        "text": "This dimension looks at whether people see themselves as individuals or as part of a group. In individualistic societies, people value independence, self-reliance, and personal achievements. Family ties may be looser, and people are expected to look after themselves. In collectivist societies, people see themselves as part of strong, loyal groups like extended families or teams. Group harmony and loyalty are prioritized over personal goals."
+    },
+    {
+        "dim": "Masculinity vs Femininity",
+        "text": "This dimension refers to the distribution of emotional roles between genders. Masculine cultures value competition, ambition, achievement, and material success. There is a strong emphasis on gender roles, with men expected to be assertive and women to be nurturing. Feminine cultures, on the other hand, value caring for others, quality of life, and cooperation. Gender roles are more fluid. Simply put, masculine societies focus on winning and success, while feminine societies focus on well-being and relationships."
+    },
+    {
+        "dim": "Uncertainty Avoidance",
+        "text": "It measures how comfortable a society is with uncertainty and ambiguity. High uncertainty avoidance cultures have strict rules, regulations, and a strong need for structure and predictability. People prefer clear instructions and are less tolerant of deviant behavior. In low uncertainty avoidance cultures, people are more flexible, open to change, and comfortable with ambiguity. Innovation is more welcomed. Simply put, high UAI societies avoid risks, while low UAI societies accept them more easily."
+    },
+    {
+        "dim": "Long-Term vs Short-Term Orientation",
+        "text": "This dimension looks at how societies view time and future planning. Long-term oriented cultures focus on future rewards, persistence, and adapting to change. They value long-term relationships, education, and saving. Short-term oriented cultures focus on traditions, the present, and quick results. They emphasize respect for the past and fulfilling social obligations. Simply put, long-term orientation is about preparing for the future, while short-term orientation is about honoring the past and enjoying the present."
+    },
+    {
+        "dim": "Indulgence vs Restraint",
+        "text": "This dimension measures the degree to which societies allow relatively free gratification of basic and natural human desires. Indulgent cultures allow people to enjoy life and have fun, with fewer social norms restricting behavior. People feel freer to express themselves and pursue leisure. Restrained cultures have strict social norms, and people may feel guilty about indulgence. Life is more controlled and duty-oriented."
+    }
+]
