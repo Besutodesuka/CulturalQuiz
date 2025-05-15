@@ -1,7 +1,7 @@
 
-import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { calculateScore, appendToCsv, Choice } from '../utils/scoreUtils'; // Make sure path is correct
+import { useEffect, useState } from 'react';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
+import { calculateScore, Choice } from '../utils/scoreUtils'; // Make sure path is correct
 import CenteredCircularImage from '../component/image';
 import RatingScaleWithSubmit from '../component/radio';
 import introGif from '/FallingStar.gif';
@@ -19,6 +19,7 @@ import {
 } from 'chart.js';
 import dimensionDescription from '../dimensionDescription.json';
 import planetList from '../planetDescription.json';
+import dimensionDefinition from '../dimensionDefinition.json';
 
 type ScoreDimension = "P" | "IC" | "MF" | "UA" | "SL" | "IR";
 
@@ -303,7 +304,7 @@ export default function Summary() {
                 }
             </div>
             {/* this is bottom section */}
-            <div className="items-center my-6 grid grid-cols-1 md:grid-cols-2 w-4/5">
+            <div className="justify-center items-center my-6 grid md:grid-cols-2 w-4/5">
                  {/* Radar Chart Section //guesses submit then show */}
                 <div className="justify-center dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow-md dark:text-white w-full mb-6">
                     <h2 className="text-xl font-semibold  dark:text-white mb-4">Score Visualization</h2>
@@ -312,7 +313,32 @@ export default function Summary() {
                     </div>
                 </div>
                 {/* {radio button here} */}
-                <RatingScaleWithSubmit/>
+                <div className='items-center justify-center mb-6 mx-6'>
+                    <RatingScaleWithSubmit/>
+                </div>
+            </div>
+            <div className="dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow-md w-4/5">
+                <h1 className="text-xl font-semibold  dark:text-white mb-4">Cultural Dimension Definition</h1>
+                <div className='md:grid-cols-2'>
+                    <p className='text-white'> this test is base on hofstede's theory a framework for understanding the impact of culture on individual and social behavior. the definition is from this</p>
+                    <a className='text-white' href="https://www.simplypsychology.org/hofstedes-cultural-dimensions-theory.html#:~:text=Hofstede's%20Cultural%20Dimensions%20Theory%2C%20developed,long%2Dterm%20orientation" target="_blank">link</a>
+                </div>
+                {
+                    dimensionDefinition.map(
+                        dim => {
+                            const textcontent = dim.text;
+                            const dimtext = dim.dim;
+                            return (
+                                <div>
+                                <h1 className="text-xl font-semibold  dark:text-white mb-4">{dimtext}</h1>
+                                <p className="dark:text-white"> {/* Use a unique key, dim.type is a good candidate if it's unique */}
+                                    {textcontent}
+                                </p>
+                                </div>
+                            );
+                        }
+                    )
+                }
             </div>
         </div>
     );

@@ -26,7 +26,7 @@ function RatingScaleWithSubmit() {
   };
 
   return (
-    <div className="bg-white mx-6 dark:bg-gray-800 shadow-md rounded-lg p-6 sm:p-8  max-w-xs flex-1 w-auto h-auto">
+    <div className="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6 sm:p-8  max-w-xs flex-1 w-auto h-auto">
       <form onSubmit={handleSubmit}>
         <fieldset className="border-none p-0 m-0">
           <legend className="text-lg font-medium text-gray-900 dark:text-white mb-4">
