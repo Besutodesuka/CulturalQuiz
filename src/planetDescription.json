@@ -1,11 +1,110 @@
 [
     {
         "id": 1,
-        "planet": "ultra mooms",
-        "image": "/pngtree-gray-network-placeholder-png-image_3416659.jpg",
-        "Description":"Excuse me but do you like Wendys?\n Yes why?\nBecause you are going to love when deez nuts hit you in the face",
+        "planet": "Equilara",
+        "image": "/Equilara.png",
+        "Description":"Interlocking rings or balanced scales suspended in air. \nA world where all things flow together. No hierarchy, only collaboration. Trees whisper in harmony, and the stars blink in consensus.",
         "stat": {
-            "P": "High", "IC": "Low", "MF": "Low", "UA": "Low", "SL": "Low", "IR": "Low"
+            "P": "Low", "MF": "Low", "IC": "Low", "UA": "Low"
         }
-    } 
+    },
+    {
+        "id": 2,
+        "planet": "Dominax",
+        "image": "/Dominax.png",
+        "Description":"A crown-shaped star or a glowing sigil above a central throne. \nThe firmament of law and leadership. The land obeys design. All roads lead to the center - where decisions are made swiftly and upheld.",
+        "stat": {
+            "P": "High", "MF": "High", "UA": "High"
+        }
+    },
+    {
+        "id": 3,
+        "planet": "Praxion",
+        "image": "/Praxion.png",
+        "Description":"A hexagon star gear or honeycomb - like structures. \nFunction over form - but beauty emerges from precision. The terrain moves with purpose. No effort is wasted, no time left idle.",
+        "stat": {
+            "P": "Balance", "IR": "Low", "IC": "Low", "UA": "Balance"
+        }
+    },
+    {
+        "id": 4,
+        "planet": "Veloria",
+        "image": "/Veloria.png",
+        "Description":"An hourglass nebula or eye-like starlight halo. \nA planet made of ideas. Time dilates, and the impossible seems near. All who wander here gaze forward - to what could be.",
+        "stat": {
+            "IC": "High", "SL": "High", "UA": "Low"
+        }
+    },
+    {
+        "id": 5,
+        "planet": "Carnalis",
+        "image": "/Carnalis.png",
+        "Description":"A bursting star like fireworks or a spiral confetti storm. \nHere, joy is purpose. Fireflies carry music, rivers pulse to the beat of hearts, and every dusk ends in lightshows and laughter.",
+        "stat": {
+            "IR": "High", "IC": "High", "UA": "Low", "MF": "High"
+        }
+    },
+    {
+        "id": 6,
+        "planet": "Sternhold",
+        "image": "/Sternhold.png",
+        "Description":"A pyramid star or old clock face embedded in constellations. \nBound by history, this world remembers. Its air is thick with ceremony, and even stars move by ancient rhythm.",
+        "stat": {
+            "P": "High", "UA": "High", "IR": "Low"
+        }
+    },
+    {
+        "id": 7,
+        "planet": "Mytherra",
+        "image": "/Mytherra.png",
+        "Description":"A luminous seed or dreamcatcher star with soft tendrils. \nA sanctuary of inner truth. Whispers ride the wind, and empathy binds the soil. Reality here is as much felt as seen.",
+        "stat": {
+            "IC": "Low", "SL": "High", "UA": "Low", "MF": "Low"
+        }
+    },
+    {
+        "id": 8,
+        "planet": "Fortalux",
+        "image": "/Fortalux.png",
+        "Description":"A star made of circuit paths or lightning-bolt silhouettes. \nEvery second births invention. Thought becomes function. Fortalux never sleeps - it sprints through the future.",
+        "stat": {
+            "IC": "High", "UA": "Low", "MF": "High", "P": "Low"
+        }
+    },
+    {
+        "id": 9,
+        "planet": "Ordimar",
+        "image": "/Ordimar.png",
+        "Description":"A compass-rose star or gridded sphere with glowing seams. \nA machine-like calm. Precision governs motion. All is optimized, and every role is clearly defined.",
+        "stat": {
+            "P": "Balance", "UA": "High", "SL": "Low"
+        }
+    },
+    {
+        "id": 10,
+        "planet": "Equilara",
+        "image": "/Equilara.png",
+        "Description":"A crescent star with orbiting teardrops or aura rings. \nEmpathy is architecture. You feel this world before you see it. Bonds here don't break - they blossom.",
+        "stat": {
+            "MF": "Low", "IC": "Low", "IR": "High"
+        }
+    },
+    {
+        "id": 11,
+        "planet": "Aegiron",
+        "image": "/Aegiron.png",
+        "Description":"A spiked star or shield-emblem with flaring edges. \nBorn to defend, this land stands tall against chaos. Loyalty here is forged, not promised. Every path tests courage.",
+        "stat": {
+            "MF": "High", "SL": "Low", "P": "High", "IR": "Low"
+        }
+    },
+    {
+        "id": 12,
+        "planet": "Zenithra",
+        "image": "/Zenithra.png",
+        "Description":"A Yin-Yang-like star or mirrored constellations. \nThe still point between extremes. Here, every shadow has light. Every step is weighed - not out of caution, but clarity.",
+        "stat": {
+            "P": "Balance", "IC": "Balance", "MF": "Balance", "UA": "Balance", "SL": "Balance", "IR": "Balance"
+        }
+    }
 ]
